@@ -1,6 +1,7 @@
 const { 
     createData, 
     readData, 
+    readSingleData,
     updateData, 
     deleteData 
 } = require('../controllers/bootcamp-controller');
@@ -12,6 +13,7 @@ router.route('/')
     .get(readData);
 
 router.route('/:id')
+    .get(readSingleData)
     .put(updateData)
     .delete(deleteData);
 

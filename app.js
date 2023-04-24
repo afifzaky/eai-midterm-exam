@@ -17,4 +17,3 @@ app.use(errorHandler);
 
 // buat server nya
 app.listen(PORT, () => console.log(`Server running at port: ${PORT}`));
-

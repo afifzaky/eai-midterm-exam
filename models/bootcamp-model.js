@@ -30,6 +30,24 @@ exports.getBootcamps = (response, statement, next) => {
     });
 };
 
+// get single bootcamp
+exports.getBootcamp = (response, statement, id, next) => {
+    // jalankan query
+    koneksi.query(statement, id, (err, rows, field) => {
+        // error handling
+        if (err) {
+            return next(new ErrorResponse(err.message, 500));
+    }
+    // jika request berhasil
+        if (rows.length) {
+            responseData(response, 200, rows[0]);
+    } else {
+        return next(new ErrorResponse('Data tidak ditemukan!', 404));
+        }
+    });
+};
+
+
 // update data bootcamp
 exports.updateBootcamp = (response, searchStatement, updateStatement, id, data, next) => {
     // jalankan query untuk melakukan pencarian data

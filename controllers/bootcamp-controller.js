@@ -1,6 +1,7 @@
 const { 
     insertBootcamp, 
-    getBootcamps, 
+    getBootcamps,
+    getBootcamp, 
     updateBootcamp, 
     deleteBootcamp 
 } = require('../models/bootcamp-model');
@@ -30,6 +31,15 @@ exports.readData = (req, res, next) => {
 
     // masukkan ke dalam model
     getBootcamps(res, querySql, next);
+};
+
+// show single bootcamp
+exports.readSingleData = (req, res, next) => {
+    // buat query sql
+    const querySql = 'SELECT * FROM bootcamp WHERE id = ?';
+
+    // masukkan ke dalam model
+    getBootcamp(res, querySql, req.params.id, next);
 };
 
 // update bootcamp
